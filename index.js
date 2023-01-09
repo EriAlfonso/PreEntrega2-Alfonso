@@ -99,27 +99,27 @@ console.log(`la clase de ${nombrePersonaje} es ${clasePersonaje}`)
     else if (stats.toLowerCase() == "no") {
         alert(`Generar personajes al azar puede resultar en personajes mucho mas fuerte o debil! Suerte!!`)
         // fuerza
-        let fuerzaTotal = Math.floor((Math.random() * 18) + 1)
+        var fuerzaTotal = Math.floor((Math.random() * 18) + 1)
         console.log(`tu fuerza es ${fuerzaTotal}`)
 
         // carisma
-        let carismaTotal = Math.floor((Math.random() * 18) + 1)
+        var carismaTotal = Math.floor((Math.random() * 18) + 1)
         console.log(`tu carisma es ${carismaTotal}`)
 
         // constitucion
-        let constitucionTotal = Math.floor((Math.random() * 18) + 1)
+        var constitucionTotal = Math.floor((Math.random() * 18) + 1)
         console.log(`tu constitucion es ${constitucionTotal}`)
 
         // destreza
-        let destrezaTotal = Math.floor((Math.random() * 18) + 1)
+        var destrezaTotal = Math.floor((Math.random() * 18) + 1)
         console.log(`tu destreza es ${destrezaTotal}`)
 
         // inteligencia
-        let inteligenciaTotal = Math.floor((Math.random() * 18) + 1)
+        var inteligenciaTotal = Math.floor((Math.random() * 18) + 1)
         console.log(`tu inteligencia es ${inteligenciaTotal}`)
 
         // sabiduria
-        let sabiduriaTotal = Math.floor((Math.random() * 18) + 1)
+        var sabiduriaTotal = Math.floor((Math.random() * 18) + 1)
         console.log(`tu sabiduria es ${sabiduriaTotal}`)
     }
     else {
