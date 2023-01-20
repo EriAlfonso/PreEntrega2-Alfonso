@@ -1,35 +1,55 @@
+// clase constructora para array
+class Personaje {
+    constructor( id,nombre, clase, raza, fuerza, carisma, constitucion, destreza, inteligencia, sabiduria) {
+            this.id =id
+            this.nombre = nombre,
+            this.clase = clase,
+            this.raza = raza,
+            this.fuerza = fuerza,
+            this.carisma = carisma,
+            this.constitucion = constitucion,
+            this.destreza = destreza,
+            this.inteligencia = inteligencia,
+            this.sabiduria = sabiduria
 
-// function nuevoPersonaje() {
-//         do{
+    }
+}
+
+const grupoPersonajes = []
+
+// funcion para personajes nuevos
+function nuevoPersonaje() {
+    do {
         let nombrePersonaje = prompt('Escriba el nombre de su personaje')
         console.log('el nombre de su personaje es ' + nombrePersonaje)
         let clasePersonaje = prompt(`escriba la clase de su personaje`)
         console.log(`la clase de ${nombrePersonaje} es ${clasePersonaje}`)
-//         //raza del personaje
-            let razaPersonaje = parseInt(prompt(`Elija la raza de: ${nombrePersonaje} , (ingrese el numero de la raza deseada)
+        //         //raza del personaje
+        let razaPersonaje = parseInt(prompt(`Elija la raza de: ${nombrePersonaje} , (ingrese el numero de la raza deseada)
             1 - Mediano (+2 a destreza)
             2 - Elfo (+2 a destreza)
             3 - Enano (+2 a constitucion)
             4 - Humano (+1 en todo)`))
-                    if (razaPersonaje==1){
-                        razaPersonaje = "Mediano"
-                    }
-            
-                    else if (razaPersonaje==2){
-                        razaPersonaje = "Elfo"
-                    }
-            
-                    else if (razaPersonaje==3){
-                        razaPersonaje = "Enano"
-                    }
-            
-                    else if (razaPersonaje==4){
-                        razaPersonaje = "Humano"
-                    }
-            
-                    else{  
-                        console.log(`por favor ingrese un numero valido`)}
-                        console.log (`la raza de ${nombrePersonaje} es ${razaPersonaje}`)
+        if (razaPersonaje == 1) {
+            razaPersonaje = "Mediano"
+        }
+
+        else if (razaPersonaje == 2) {
+            razaPersonaje = "Elfo"
+        }
+
+        else if (razaPersonaje == 3) {
+            razaPersonaje = "Enano"
+        }
+
+        else if (razaPersonaje == 4) {
+            razaPersonaje = "Humano"
+        }
+
+        else {
+            console.log(`por favor ingrese un numero valido`)
+        }
+        console.log(`la raza de ${nombrePersonaje} es ${razaPersonaje}`)
         // puntos de habilidad
 
         let stats = prompt(`Quieres colocar tus puntos de habilidad manualmente? Ingrese si o no`)
@@ -86,6 +106,12 @@
             let sabiduriaTotal = puntoInicial + sabiduriaPunto
             console.log(`tu sabiduria es ${sabiduriaTotal}`)
 
+            // agregar personaje creado a grupo array 
+            const personajeNew = new Personaje(grupoPersonajes.length + 1, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
+            console.log(personajeNew)
+            grupoPersonajes.push(personajeNew)
+            console.log(grupoPersonajes)
+
         }
         else if (stats.toLowerCase() == "no") {
             alert(`Generar personajes al azar puede resultar en personajes mucho mas fuerte o debil! Suerte!!`)
@@ -101,7 +127,7 @@
             let constitucionTotal = Math.floor((Math.random() * 18) + 1)
             console.log(`tu constitucion es ${constitucionTotal}`)
 
-            // destreza
+            // destreza 
             let destrezaTotal = Math.floor((Math.random() * 18) + 1)
             console.log(`tu destreza es ${destrezaTotal}`)
 
@@ -112,87 +138,63 @@
             // sabiduria
             let sabiduriaTotal = Math.floor((Math.random() * 18) + 1)
             console.log(`tu sabiduria es ${sabiduriaTotal}`)
+
+            // agregar personaje al azar a grupo array 
+            const personajeNew = new Personaje(grupoPersonajes.length + 1, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
+            console.log(personajeNew)
+            grupoPersonajes.push(personajeNew)
+            console.log(grupoPersonajes)
         }
         else {
             alert(`por favor ingrese si o no`)
         }
-    // final
-    alert(`su personaje es ${nombrePersonaje} un ${clasePersonaje} de raza ${razaPersonaje}
-    con:
-    fuerza= ${fuerzaTotal}
-    carisma= ${carismaTotal}
-    constitucion= ${constitucionTotal}
-    destreza= ${destrezaTotal}
-    inteligencia= ${inteligenciaTotal}
-    sabiduria= ${sabiduriaTotal}`)
+        respuesta = prompt('Quieres crear otro personaje? Escribe "no" para salir.')
+    } while (respuesta.toLowerCase() != "no")
+}
 
-    // respuesta = prompt('Quieres crear otro personaje? Escribe "no" para salir.')
-    // } while (respuesta.toLowerCase() != "no")
-// }
-// class Personaje {
-//     constructor(nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal) {
+// borrar personaje creado del array
+// consultar array
+// buscar personaje creado
 
-//         this.nombrePersonaje = nombrePersonaje,
-//             this.clasePersonaje = clasePersonaje,
-//             this.razaPersonaje = razaPersonaje,
-//             this.fuerzaTotal = fuerzaTotal,
-//             this.carismaTotal = carismaTotal,
-//             this.constitucionTotal = constitucionTotal,
-//             this.destrezaTotal = destrezaTotal,
-//             this.inteligenciaTotal = inteligenciaTotal,
-//             this.sabiduriaTotal = sabiduriaTotal
+// funcion para salida de menu
+function mainMenu() {
+    let exitMenu = false
+    do {
+        exitMenu = menuOpciones(exitMenu)
+    } while (!exitMenu)
+}
 
-//     }
-//     personajeFinalizado() {
-//         alert(`su personaje es ${this.nombrePersonaje} un ${this.clasePersonaje} ${this.razaPersonaje}
-//     con:
-//     fuerza= ${this.fuerzaTotal}
-//     carisma= ${this.carismaTotal}
-//     constitucion= ${this.constitucionTotal}
-//     destreza= ${this.destrezaTotal}
-//     inteligencia= ${this.inteligenciaTotal}
-//     sabiduria= ${this.sabiduriaTotal}`)
-//     }
-// }
+// funcion y switch de menu
+function menuOpciones(exitMenu) {
+    let opcionIngresada = parseInt(prompt(`Que desea hacer?
+        1 - Crear un personaje nuevo
+        2 - Borrar un personaje
+        3 - Consultar grupo de personajes
+        4 - Encontrar un personaje
+        0 - Salir del menu`))
 
-        
-// function mainMenu() {
-//     let exitMenu = false
-//     do {
-//         exitMenu = menuOpciones(exitMenu)
-//     } while (!exitMenu)
-// }
-
-// function menuOpciones(exitMenu) {
-//     let opcionIngresada = parseInt(prompt(`Que desea hacer?
-//         1 - Crear un personaje nuevo
-//         2 - Borrar un personaje
-//         3 - Consultar grupo de personajes
-//         4 - Encontrar un personaje
-//         0 - Salir del menu`))
-
-//     switch (opcionIngresada) {
-//         case 1:
-//             alert('Vamos a crear un personaje de Dungeons and Dragons!')
-//             nuevoPersonaje()
-//             break
-//         case 2:
-//             eliminarPersonaje(estanteria)
-//             break
-//         case 3:
-//             mostrarGrupoForEach(estanteria)
-//             break
-//         case 4:
-//             buscarPersonaje(estanteria)
-//             break
-//         case 0:
-//             alert("Suerte con su aventura! nos vemos!")
-//             exitMenu = true
-//             return exitMenu
-//             break
-//         default:
-//             console.log("Ingrese una opción correcta")
-//             break
-//     }
-// }
-// mainMenu()
+    switch (opcionIngresada) {
+        case 1:
+            alert('Vamos a crear un personaje de Dungeons and Dragons!')
+            nuevoPersonaje()
+            break
+        case 2:
+            eliminarPersonaje(estanteria)
+            break
+        case 3:
+            mostrarGrupoForEach(estanteria)
+            break
+        case 4:
+            buscarPersonaje(estanteria)
+            break
+        case 0:
+            alert("Suerte con su aventura! nos vemos!")
+            exitMenu = true
+            return exitMenu
+            break
+        default:
+            console.log("Ingrese una opción correcta")
+            break
+    }
+}
+mainMenu()
