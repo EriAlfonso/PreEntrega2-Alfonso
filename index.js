@@ -153,8 +153,43 @@ function nuevoPersonaje() {
 }
 
 // borrar personaje creado del array
+function eliminarPersonaje(array){
+    console.log("ingrese el nombre del personaje que desea eliminar")
+    for(let elem of array){
+        console.log(`${elem.id} - ${elem.titulo} del autor ${elem.autor}`)
+    }
+    let idEliminar =(prompt("Ingrese el nombre del personaje que desea eliminar"))
+
+    //método map: utilizamos para tener un array con las id 
+    let arrayID = array.map(book => book.id)
+    console.log(arrayID)
+
+    //indexOf le pasamos un parámetro y de existir nos dice en que indice esta
+    let indice = arrayID.indexOf(idEliminar)
+}
+
 // consultar array
+function mostrarGrupoForEach(array){
+    console.log(`Grupo de Aventura!: `)
+    array.forEach(
+        (personaje)=>{
+            console.log(personaje.id,personaje.nombre, personaje.clase, personaje.raza, personaje.fuerza, personaje.carisma, personaje.constitucion, personaje.destreza, personaje.inteligencia, personaje.sabiduria)
+        }
+    )
+}
+
 // buscar personaje creado
+function buscarPersonaje(array){
+    let buscarPersonaje = prompt("Ingrese el nombre del del personaje que busca:")
+    let search = array.find(
+        (personaje)=>personaje.nombre.toLowerCase() == buscarPersonaje.toLowerCase()
+        )
+    if(search == undefined){
+        console.log(`El personaje ${buscarPersonaje} no existe`)
+    }else{
+        console.log(search)
+    }    
+}
 
 // funcion para salida de menu
 function mainMenu() {
@@ -179,13 +214,13 @@ function menuOpciones(exitMenu) {
             nuevoPersonaje()
             break
         case 2:
-            eliminarPersonaje(estanteria)
+            eliminarPersonaje(grupoPersonajes)
             break
         case 3:
-            mostrarGrupoForEach(estanteria)
+            mostrarGrupoForEach(grupoPersonajes)
             break
         case 4:
-            buscarPersonaje(estanteria)
+            buscarPersonaje(grupoPersonajes)
             break
         case 0:
             alert("Suerte con su aventura! nos vemos!")
