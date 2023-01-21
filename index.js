@@ -24,7 +24,7 @@ function nuevoPersonaje() {
         console.log('el nombre de su personaje es ' + nombrePersonaje)
         let clasePersonaje = prompt(`escriba la clase de su personaje`)
         console.log(`la clase de ${nombrePersonaje} es ${clasePersonaje}`)
-        //         //raza del personaje
+        //raza del personaje
         let razaPersonaje = parseInt(prompt(`Elija la raza de: ${nombrePersonaje} , (ingrese el numero de la raza deseada)
             1 - Mediano (+2 a destreza)
             2 - Elfo (+2 a destreza)
@@ -159,15 +159,9 @@ function eliminarPersonaje(array) {
         console.log(`${persona.id} - ${persona.nombre} de clase ${persona.clase}}`)
     }
     let idDelete = parseInt(prompt("Ingrese el numero de id del personaje que desea eliminar"))
-
     let grupoIDarray = array.map(character => character.id)
     console.log(grupoIDarray)
-
-    //indexOf le pasamos un parámetro y de existir nos dice en que indice esta
     let indexid = grupoIDarray.indexOf(idDelete)
-
-    //splice era un método que podíamos pasarle posicion y cuanto va a eliminar
-    //primer parametro donde empieza a trabajar(indice), segun parametro cuantos va eliminar
     array.splice(indexid, 1)
     mostrarGrupoForEach(array)
 }
