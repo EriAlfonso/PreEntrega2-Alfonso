@@ -1,8 +1,8 @@
 // clase constructora para array
 class Personaje {
-    constructor( id,nombre, clase, raza, fuerza, carisma, constitucion, destreza, inteligencia, sabiduria) {
-            this.id =id
-            this.nombre = nombre,
+    constructor(id, nombre, clase, raza, fuerza, carisma, constitucion, destreza, inteligencia, sabiduria) {
+        this.id = id
+        this.nombre = nombre,
             this.clase = clase,
             this.raza = raza,
             this.fuerza = fuerza,
@@ -153,42 +153,46 @@ function nuevoPersonaje() {
 }
 
 // borrar personaje creado del array
-function eliminarPersonaje(array){
-    console.log("ingrese el nombre del personaje que desea eliminar")
-    for(let elem of array){
-        console.log(`${elem.id} - ${elem.titulo} del autor ${elem.autor}`)
+function eliminarPersonaje(array) {
+    console.log("estos son los personajes creados para este grupo:")
+    for (let persona of array) {
+        console.log(`${persona.id} - ${persona.nombre} de clase ${persona.clase}}`)
     }
-    let idEliminar =(prompt("Ingrese el nombre del personaje que desea eliminar"))
+    let idDelete = parseInt(prompt("Ingrese el numero de id del personaje que desea eliminar"))
 
-    //método map: utilizamos para tener un array con las id 
-    let arrayID = array.map(book => book.id)
-    console.log(arrayID)
+    let grupoIDarray = array.map(character => character.id)
+    console.log(grupoIDarray)
 
     //indexOf le pasamos un parámetro y de existir nos dice en que indice esta
-    let indice = arrayID.indexOf(idEliminar)
+    let indexid = grupoIDarray.indexOf(idDelete)
+
+    //splice era un método que podíamos pasarle posicion y cuanto va a eliminar
+    //primer parametro donde empieza a trabajar(indice), segun parametro cuantos va eliminar
+    array.splice(indexid, 1)
+    mostrarGrupoForEach(array)
 }
 
 // consultar array
-function mostrarGrupoForEach(array){
+function mostrarGrupoForEach(array) {
     console.log(`Grupo de Aventura!: `)
     array.forEach(
-        (personaje)=>{
-            console.log(personaje.id,personaje.nombre, personaje.clase, personaje.raza, personaje.fuerza, personaje.carisma, personaje.constitucion, personaje.destreza, personaje.inteligencia, personaje.sabiduria)
+        (personaje) => {
+            console.log(personaje.id, personaje.nombre, personaje.clase, personaje.raza, personaje.fuerza, personaje.carisma, personaje.constitucion, personaje.destreza, personaje.inteligencia, personaje.sabiduria)
         }
     )
 }
 
 // buscar personaje creado
-function buscarPersonaje(array){
+function buscarPersonaje(array) {
     let buscarPersonaje = prompt("Ingrese el nombre del del personaje que busca:")
     let search = array.find(
-        (personaje)=>personaje.nombre.toLowerCase() == buscarPersonaje.toLowerCase()
-        )
-    if(search == undefined){
+        (personaje) => personaje.nombre.toLowerCase() == buscarPersonaje.toLowerCase()
+    )
+    if (search == undefined) {
         console.log(`El personaje ${buscarPersonaje} no existe`)
-    }else{
+    } else {
         console.log(search)
-    }    
+    }
 }
 
 // funcion para salida de menu
