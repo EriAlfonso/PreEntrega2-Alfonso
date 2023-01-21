@@ -14,7 +14,7 @@ class Personaje {
 
     }
 }
-
+// array
 const grupoPersonajes = []
 
 // funcion para personajes nuevos
@@ -113,6 +113,7 @@ function nuevoPersonaje() {
             console.log(grupoPersonajes)
 
         }
+        // puntos al azar
         else if (stats.toLowerCase() == "no") {
             alert(`Generar personajes al azar puede resultar en personajes mucho mas fuerte o debil! Suerte!!`)
             // fuerza
@@ -226,7 +227,7 @@ function menuOpciones(exitMenu) {
             return exitMenu
             break
         default:
-            console.log("Ingrese una opción correcta")
+            console.log("por favor ingres un numero valido (0-4) ")
             break
     }
 }
