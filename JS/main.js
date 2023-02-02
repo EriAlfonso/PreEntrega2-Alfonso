@@ -1,10 +1,11 @@
 // capturas de dom
-// function para abrir un form
-let advSearchBtn = document.getElementById("nuevoPersonaje");
-let advancedSearchBox = document.getElementById("personajeNuevo");
-advSearchBtn.onclick = function () {
-    advancedSearchBox.style.display = advancedSearchBox.style.display === "block" ? "none" : "block";
-};
+// function para abrir y cerrar un form
+let personajeBtn = document.getElementById("nuevoPersonaje")
+let personajeFormBox = document.getElementById("personajeNuevoForm")
+//ternario para abrir y cerrar el form
+personajeBtn.onclick = function () {
+    personajeFormBox.style.display = personajeFormBox.style.display === "block" ? "none" : "block";
+}
 
 // function cargarLibro(array){
 //     let inputAutor = document.getElementById("autorInput")

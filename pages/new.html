@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link rel="stylesheet" href="../style.css">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="../style.css">
     <title>PreEntrega</title>
 
 </head>
@@ -55,15 +57,16 @@
         <button id="nuevoPersonaje" class="btn btn-success">Nuevo Personaje</button>
         <button id="nuevoAzar" data-bs-toggle="modal" data-bs-target="#idModalAgregarLibro"
             class="btn btn-success">Nuevo Personaje Al Azar</button>
-        <div id="personajeNuevo" class="form-box">
+        <div id="personajeNuevoForm" class="form-box">
             <form id="regForm" action="">
 
                 <h1>Register:</h1>
 
                 <!-- One "tab" for each step in the form: -->
-                <div class="tab">Name:
-                    <p><input placeholder="First name..." oninput="this.className = ''"></p>
-                    <p><input placeholder="Last name..." oninput="this.className = ''"></p>
+                <div class="tab">Nombre de personaje:
+                    <p><input placeholder="Nombre..." oninput="this.className = ''"></p>
+                    Raza de personaje:
+                    <p><input placeholder="Raza..." oninput="this.className = ''"></p>
                 </div>
 
                 <div class="tab">Contact Info:
