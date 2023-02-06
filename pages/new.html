@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../index.html"><img src="./Assets/dragonicondark.png" alt="Logo" width=""
+                <a class="navbar-brand" href="../index.html"><img src="../Assets/dragonicondark.png" alt="Logo" width=""
                         height="34" class="d-inline-block align-text-top">
                     Easy Character</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,10 +30,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                            <a class="nav-link " aria-current="page" href="../index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./new.html">Nuevo personaje</a>
+                            <a class="nav-link active" href="./new.html">Nuevo personaje</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -54,14 +54,24 @@
         </nav>
     </header>
     <main>
+        <!-- button para form -->
         <button id="nuevoPersonaje" class="btn btn-success">Nuevo Personaje</button>
-        <button id="nuevoAzar" data-bs-toggle="modal" data-bs-target=""class="btn btn-success">Nuevo Personaje Al Azar</button>
-        <div>
-            <h1>Creador de personaje</h1>
-            <div id="multi-step-form-container">
-                <!-- Form Steps / Progress Bar -->
+        <!-- button para modal -->
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Nuevo Personaje al Azar
+        </button>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label darkmode" for="flexSwitchCheckDefault">Dark</label>
+        </div>
+
+        <!-- Form Para Personajes -->
+        <div id="personajeNuevoForm">
+            <h1 class="tituloForm">Creador de personaje</h1>
+            <div class="multi-step-form-container">
+                <!-- Progress Bar -->
                 <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
-                    <!-- Step 1 -->
+                    <!-- Paso 1  Progress Bar-->
                     <li class="form-stepper-active text-center form-stepper-list" step="1">
                         <a class="mx-2">
                             <span class="form-stepper-circle">
@@ -70,7 +80,7 @@
                             <div class="label">Detalles del personaje</div>
                         </a>
                     </li>
-                    <!-- Step 2 -->
+                    <!-- Paso 2 Progress Bar-->
                     <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
                         <a class="mx-2">
                             <span class="form-stepper-circle text-muted">
@@ -79,7 +89,7 @@
                             <div class="label text-muted">Raza y Clase del personaje</div>
                         </a>
                     </li>
-                    <!-- Step 3 -->
+                    <!-- Paso 3  Progress Bar-->
                     <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
                         <a class="mx-2">
                             <span class="form-stepper-circle text-muted">
@@ -90,35 +100,35 @@
                     </li>
                 </ul>
                 <!-- Step Wise Form Content -->
-                <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
-                    <!-- Step 1 Content -->
+                <form id="personajeSetupForm" name="personajeSetupForm" enctype="multipart/form-data" method="POST">
+                    <!-- Paso 1 Contenido -->
                     <section id="step-1" class="form-step">
                         <h2 class="font-normal">Detalles del personaje</h2>
-                        <!-- Step 1 input fields -->
                         <div class="mt-3">
-                    <h3>Nombre del personaje:</h3>
-                    <p><input placeholder="Nombre..." id="nombrePersonaje"></p>
+                            <label>Nombre del personaje:</label>
+                            <p><input placeholder="Nombre..." id="nombrePersonaje"></p>
                         </div>
                         <div class="mt-3">
                             <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
                         </div>
                     </section>
-                    <!-- Step 2 Content, default hidden on page load. -->
+                    <!-- Paso 2 Contenido -->
                     <section id="step-2" class="form-step d-none">
                         <h2 class="font-normal">Raza y clase</h2>
-                        <!-- Step 2 input fields -->
                         <div class="mt-3">
-                            <select class="form-select" aria-label="Default select" id="razaPersonaje" >
+                            <label>Raza del personaje:</label>
+                            <select class="form-select" aria-label="Default select" id="razaPersonaje">
                                 <option selected>Humano</option>
-                                <option >Elfo</option>
-                                <option >Enano</option>
-                                <option >Mediano</option>
+                                <option>Elfo</option>
+                                <option>Enano</option>
+                                <option>Mediano</option>
                             </select>
-                            <select class="form-select" aria-label="Default select" id="clasePersonaje" >
+                            <label>Clase del personaje:</label>
+                            <select class="form-select" aria-label="Default select" id="clasePersonaje">
                                 <option selected>Mago</option>
-                                <option >Picaro</option>
-                                <option >Arquero</option>
-                                <option >paladin</option>
+                                <option>Picaro</option>
+                                <option>Arquero</option>
+                                <option>paladin</option>
                             </select>
                         </div>
                         <div class="mt-3">
@@ -126,34 +136,70 @@
                             <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
                         </div>
                     </section>
-                    <!-- Step 3 Content, default hidden on page load. -->
+                    <!-- Paso 3 Contenido -->
                     <section id="step-3" class="form-step d-none">
                         <h2 class="font-normal">Puntos de habilidades</h2>
-                        <!-- Step 3 input fields -->
                         <div class="mt-3">
                             <div id="counter">Counter: <span id="counterValue">27</span></div>
                             <h3>Allocacion de puntos:</h3>
                             <h4>fuerza:</h4>
-                            <p><input type="number" id="fuerzaTotal" value="8"  min="8" max="15"> </p>
+                            <p><input type="number" id="fuerzaTotal" value="8" min="8" max="15"> </p>
                             <h4>carisma:</h4>
-                            <p><input type="number" id="carismaTotal" value="8"  min="8" max="15"></p>
+                            <p><input type="number" id="carismaTotal" value="8" min="8" max="15"></p>
                             <h4>constitucion:</h4>
-                            <p><input type="number" id="constitucionTotal" value="8"  min="8" max="15"></p>
+                            <p><input type="number" id="constitucionTotal" value="8" min="8" max="15"></p>
                             <h4>destreza:</h4>
-                            <p><input type="number" id="destrezaTotal" value="8"  min="8" max="15"></p>
+                            <p><input type="number" id="destrezaTotal" value="8" min="8" max="15"></p>
                             <h4>inteligencia:</h4>
-                            <p><input type="number" id="inteligenciaTotal" value="8"  min="8" max="15"></p>
+                            <p><input type="number" id="inteligenciaTotal" value="8" min="8" max="15"></p>
                             <h4>sabiduria:</h4>
-                            <p><input type="number" id="sabiduriaTotal" value="8"  min="8" max="15"></p>
+                            <p><input type="number" id="sabiduriaTotal" value="8" min="8" max="15"></p>
                         </div>
                         <div class="mt-3">
                             <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                            <button class="button submit-btn" id="guardar" type="submit">Save</button>
+                            <button class="button submit-btn" id="guardar" type="submit"
+                                onclick="window.location.href='../index.html'">Guardar</button>
                         </div>
                     </section>
                 </form>
             </div>
         </div>
+        <!-- bootstrap modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Creador al azar</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Nombre del personaje:</label>
+                        <p><input placeholder="Nombre..." id="nombrePersonajeModal"></p>
+                        <label>Raza del personaje:</label>
+                        <select class="form-select" aria-label="Default select" id="razaPersonajeModal">
+                        <option selected>Humano</option>
+                        <option>Elfo</option>
+                        <option>Enano</option>
+                        <option>Mediano</option>
+                    </select>
+                    <label>Clase del personaje:</label>
+                    <select class="form-select" aria-label="Default select" id="clasePersonajeModal">
+                        <option selected>Mago</option>
+                        <option>Picaro</option>
+                        <option>Arquero</option>
+                        <option>paladin</option>
+                    </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button  class="btn btn-primary" type="button" id="modalGuardar"
+                        onclick="window.location.href='../index.html'">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
     <footer>
 

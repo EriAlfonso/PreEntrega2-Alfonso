@@ -30,7 +30,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./pages/new.html">Link</a>
+                            <a class="nav-link" href="./pages/new.html">Nuevo Personaje</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -51,10 +51,13 @@
         </nav>
     </header>
     <main>
-        <button type="button" id="Crearpersonaje" class="btn btn-secondary"onclick="window.location.href='./pages/new.html'" >nuevo personaje</button>
-        <button type="button" class="btn btn-secondary">eliminar personaje</button>
+        <button type="button" id="Crearpersonaje" class="btn btn-secondary" onclick="window.location.href='./pages/new.html'" >nuevo personaje</button>
+        <button type="button" class="btn btn-secondary" id="verCatalogo">Ver Personajes</button>
 
-
+        <div class="container">
+            <div id="coincidencia"></div>
+            <div id="personajesCreados" class="row"></div>
+        </div>
 
     </main>
     <footer>
@@ -67,7 +70,8 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <!-- js -->
-    <script src=""></script>
+    <script src="JS/ClassesArray.js"></script>
+    <script src="JS/main.js"></script>
 </body>
 
 </html>
