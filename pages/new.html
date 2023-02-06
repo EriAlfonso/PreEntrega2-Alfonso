@@ -8,7 +8,7 @@
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <!-- stylesheet -->
+    <!-- css -->
     <link rel="stylesheet" href="../style.css">
     <title>PreEntrega</title>
 
@@ -55,56 +55,105 @@
     </header>
     <main>
         <button id="nuevoPersonaje" class="btn btn-success">Nuevo Personaje</button>
-        <button id="nuevoAzar" data-bs-toggle="modal" data-bs-target="#idModalAgregarLibro"
-            class="btn btn-success">Nuevo Personaje Al Azar</button>
-        <div id="personajeNuevoForm" class="form-box">
-            <form id="regForm" action="">
-
-                <h1>Register:</h1>
-
-                <!-- One "tab" for each step in the form: -->
-                <div class="tab">Nombre de personaje:
-                    <p><input placeholder="Nombre..." oninput="this.className = ''"></p>
-                    Raza de personaje:
-                    <p><input placeholder="Raza..." oninput="this.className = ''"></p>
-                </div>
-
-                <div class="tab">Contact Info:
-                    <p><input placeholder="E-mail..." oninput="this.className = ''"></p>
-                    <p><input placeholder="Phone..." oninput="this.className = ''"></p>
-                </div>
-
-                <div class="tab">Birthday:
-                    <p><input placeholder="dd" oninput="this.className = ''"></p>
-                    <p><input placeholder="mm" oninput="this.className = ''"></p>
-                    <p><input placeholder="yyyy" oninput="this.className = ''"></p>
-                </div>
-
-                <div class="tab">Login Info:
-                    <p><input placeholder="Username..." oninput="this.className = ''"></p>
-                    <p><input placeholder="Password..." oninput="this.className = ''"></p>
-                </div>
-
-                <div style="overflow:auto;">
-                    <div style="float:right;">
-                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    </div>
-                </div>
-
-                <!-- Circles which indicates the steps of the form: -->
-                <div style="text-align:center;margin-top:40px;">
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                </div>
-
-            </form>
-
+        <button id="nuevoAzar" data-bs-toggle="modal" data-bs-target=""class="btn btn-success">Nuevo Personaje Al Azar</button>
+        <div>
+            <h1>Creador de personaje</h1>
+            <div id="multi-step-form-container">
+                <!-- Form Steps / Progress Bar -->
+                <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
+                    <!-- Step 1 -->
+                    <li class="form-stepper-active text-center form-stepper-list" step="1">
+                        <a class="mx-2">
+                            <span class="form-stepper-circle">
+                                <span>1</span>
+                            </span>
+                            <div class="label">Detalles del personaje</div>
+                        </a>
+                    </li>
+                    <!-- Step 2 -->
+                    <li class="form-stepper-unfinished text-center form-stepper-list" step="2">
+                        <a class="mx-2">
+                            <span class="form-stepper-circle text-muted">
+                                <span>2</span>
+                            </span>
+                            <div class="label text-muted">Raza y Clase del personaje</div>
+                        </a>
+                    </li>
+                    <!-- Step 3 -->
+                    <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
+                        <a class="mx-2">
+                            <span class="form-stepper-circle text-muted">
+                                <span>3</span>
+                            </span>
+                            <div class="label text-muted">Puntos de habilidades</div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Step Wise Form Content -->
+                <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
+                    <!-- Step 1 Content -->
+                    <section id="step-1" class="form-step">
+                        <h2 class="font-normal">Detalles del personaje</h2>
+                        <!-- Step 1 input fields -->
+                        <div class="mt-3">
+                    <h3>Nombre del personaje:</h3>
+                    <p><input placeholder="Nombre..." id="nombrePersonaje"></p>
+                        </div>
+                        <div class="mt-3">
+                            <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
+                        </div>
+                    </section>
+                    <!-- Step 2 Content, default hidden on page load. -->
+                    <section id="step-2" class="form-step d-none">
+                        <h2 class="font-normal">Raza y clase</h2>
+                        <!-- Step 2 input fields -->
+                        <div class="mt-3">
+                            <select class="form-select" aria-label="Default select" id="razaPersonaje" >
+                                <option selected>Humano</option>
+                                <option >Elfo</option>
+                                <option >Enano</option>
+                                <option >Mediano</option>
+                            </select>
+                            <select class="form-select" aria-label="Default select" id="clasePersonaje" >
+                                <option selected>Mago</option>
+                                <option >Picaro</option>
+                                <option >Arquero</option>
+                                <option >paladin</option>
+                            </select>
+                        </div>
+                        <div class="mt-3">
+                            <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
+                            <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
+                        </div>
+                    </section>
+                    <!-- Step 3 Content, default hidden on page load. -->
+                    <section id="step-3" class="form-step d-none">
+                        <h2 class="font-normal">Puntos de habilidades</h2>
+                        <!-- Step 3 input fields -->
+                        <div class="mt-3">
+                            <div id="counter">Counter: <span id="counterValue">27</span></div>
+                            <h3>Allocacion de puntos:</h3>
+                            <h4>fuerza:</h4>
+                            <p><input type="number" id="fuerzaTotal" value="8"  min="8" max="15"> </p>
+                            <h4>carisma:</h4>
+                            <p><input type="number" id="carismaTotal" value="8"  min="8" max="15"></p>
+                            <h4>constitucion:</h4>
+                            <p><input type="number" id="constitucionTotal" value="8"  min="8" max="15"></p>
+                            <h4>destreza:</h4>
+                            <p><input type="number" id="destrezaTotal" value="8"  min="8" max="15"></p>
+                            <h4>inteligencia:</h4>
+                            <p><input type="number" id="inteligenciaTotal" value="8"  min="8" max="15"></p>
+                            <h4>sabiduria:</h4>
+                            <p><input type="number" id="sabiduriaTotal" value="8"  min="8" max="15"></p>
+                        </div>
+                        <div class="mt-3">
+                            <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
+                            <button class="button submit-btn" id="guardar" type="submit">Save</button>
+                        </div>
+                    </section>
+                </form>
+            </div>
         </div>
-
-
     </main>
     <footer>
 
@@ -116,8 +165,9 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <!-- js -->
-    <script src="../JS/form.js"></script>
+    <script src="../JS/ClassesArray.js"></script>
     <script src="../JS/main.js"></script>
+    <script src="../JS/form.js"></script>
 </body>
 
 </html>

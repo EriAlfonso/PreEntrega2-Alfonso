@@ -15,11 +15,11 @@ class Personaje {
     }
 }
 // array
-const grupoPersonajes = []
+let grupoPersonajes = []
 // storage
 if(localStorage.getItem("grupoPersonaje")){
     grupoPersonajes = JSON.parse(localStorage.getItem("grupoPersonaje"))
-    
 }else{
 console.log("no hay personajes guardados")
+localStorage.setItem("grupoPersonajes", JSON.stringify(grupoPersonajes))
 }
