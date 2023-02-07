@@ -172,5 +172,9 @@ ul.form-stepper li a .form-stepper-circle {
   font-size: 20px;
 }
 
+/* css de cards */
+.cardHidden{
+  display: none;
+}
 /* css del navbar */
 

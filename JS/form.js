@@ -1,7 +1,6 @@
 
 // capturas de dom
 let modalGuardar = document.getElementById("modalGuardar")
-// form
 let personajeBtn = document.getElementById("nuevoPersonaje")
 let personajeFormBox = document.getElementById("personajeNuevoForm")
 
@@ -97,33 +96,32 @@ numberInputs.forEach(input => {
   });
 });
 
-// counter
-function checkNumbers() {
-  let counter = 27;
-  if (fuerzaTotal >= 8 && fuerzaTotal <= 15 &&
-      carismaTotal >= 8 && carismaTotal <= 15 &&
-      constitucionTotal >= 8 && constitucionTotal <= 15 &&
-      destrezaTotal >= 8 && destrezaTotal <= 15 &&
-      inteligenciaTotal >= 8 && inteligenciaTotal <= 15 &&
-      sabiduriaTotal >= 8 && sabiduriaTotal <= 15) {
+// // counter
+// function checkNumbers() {
+//   if (fuerzaTotal >= 8 && fuerzaTotal <= 15 &&
+//       carismaTotal >= 8 && carismaTotal <= 15 &&
+//       constitucionTotal >= 8 && constitucionTotal <= 15 &&
+//       destrezaTotal >= 8 && destrezaTotal <= 15 &&
+//       inteligenciaTotal >= 8 && inteligenciaTotal <= 15 &&
+//       sabiduriaTotal >= 8 && sabiduriaTotal <= 15) {
 
-    counter -= fuerzaTotal > 8 ? (fuerzaTotal > 13 ? 2 : 1) : 0;
-    counter -= carismaTotal > 8 ? (carismaTotal > 13 ? 2 : 1) : 0;
-    counter -= constitucionTotal > 8 ? (constitucionTotal > 13 ? 2 : 1) : 0;
-    counter -= destrezaTotal > 8 ? (destrezaTotal > 13 ? 2 : 1) : 0;
-    counter -= inteligenciaTotal > 8 ? (inteligenciaTotal > 13 ? 2 : 1) : 0;
-    counter -= sabiduriaTotal > 8 ? (sabiduriaTotal > 13 ? 2 : 1) : 0;
+//     counter -= fuerzaTotal > 8 ? (fuerzaTotal > 13 ? 2 : 1) : 0;
+//     counter -= carismaTotal > 8 ? (carismaTotal > 13 ? 2 : 1) : 0;
+//     counter -= constitucionTotal > 8 ? (constitucionTotal > 13 ? 2 : 1) : 0;
+//     counter -= destrezaTotal > 8 ? (destrezaTotal > 13 ? 2 : 1) : 0;
+//     counter -= inteligenciaTotal > 8 ? (inteligenciaTotal > 13 ? 2 : 1) : 0;
+//     counter -= sabiduriaTotal > 8 ? (sabiduriaTotal > 13 ? 2 : 1) : 0;
 
-    if (counter >= 0) {
-      localStorage.setItem("fuerza", fuerzaTotal);
-      localStorage.setItem("carisma", carismaTotal);
-      localStorage.setItem("constitucion", constitucionTotal);
-      localStorage.setItem("destreza", destrezaTotal);
-      localStorage.setItem("inteligencia", inteligenciaTotal);
-      localStorage.setItem("sabiduria", sabiduriaTotal);
-      ;
-    } else {
-      alert("El total no puede exceder a 27 puntos");
-    }
-  }
-}
+//     if (counter >= 0) {
+//       localStorage.setItem("fuerza", fuerzaTotal);
+//       localStorage.setItem("carisma", carismaTotal);
+//       localStorage.setItem("constitucion", constitucionTotal);
+//       localStorage.setItem("destreza", destrezaTotal);
+//       localStorage.setItem("inteligencia", inteligenciaTotal);
+//       localStorage.setItem("sabiduria", sabiduriaTotal);
+//       ;
+//     } else {
+//       alert("El total no puede exceder a 27 puntos");
+//     }
+//   }
+// }
