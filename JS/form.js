@@ -101,7 +101,7 @@ let counter = 27;
 let numberInputs = document.querySelectorAll("input[type='number']");
 numberInputs.forEach(input => {
   let previousValue = Number(input.value);
-  input.addEventListener("cambio", function() {
+  input.addEventListener("change", function() {
     // valor inicial
     let value = Number(input.value);
     // devolucion de puntos
