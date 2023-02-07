@@ -51,27 +51,29 @@ form.addEventListener('submit', (event) => {
     let destrezaTotal =document.getElementById("destrezaTotal").value;
     let inteligenciaTotal =document.getElementById("inteligenciaTotal").value;
     let sabiduriaTotal =document.getElementById("sabiduriaTotal").value;
-
+    // creador del objeto
     const personajeNew = new Personaje(grupoPersonajes.length + 1, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
     console.log(personajeNew)
     grupoPersonajes.push(personajeNew)
     console.log(grupoPersonajes)
     localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
 })
-// // modal
+// modal
 const modal = document.getElementById('modal-body')
 modalGuardar.addEventListener('click', (event) => {
     event.preventDefault()
+    // valores adquirido del usuario
     let nombrePersonaje =document.getElementById("nombrePersonajeModal").value;
     let clasePersonaje =document.getElementById("clasePersonajeModal").value;
     let razaPersonaje =document.getElementById("razaPersonajeModal").value;
+    // valores random
     let fuerzaTotal = Math.floor((Math.random() * 18) + 1);
     let carismaTotal = Math.floor((Math.random() * 18) + 1);
     let constitucionTotal = Math.floor((Math.random() * 18) + 1);
     let destrezaTotal = Math.floor((Math.random() * 18) + 1);
     let inteligenciaTotal = Math.floor((Math.random() * 18) + 1);
     let sabiduriaTotal = Math.floor((Math.random() * 18) + 1);
-
+    // creador del objeto
     const personajeNew = new Personaje(grupoPersonajes.length + 1, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
     console.log(personajeNew)
     grupoPersonajes.push(personajeNew)
@@ -85,43 +87,36 @@ let counter = 27;
 // modificador del contador
 let numberInputs = document.querySelectorAll("input[type='number']");
 numberInputs.forEach(input => {
-  input.addEventListener("change", function() {
+  let previousValue = Number(input.value);
+  input.addEventListener("cambio", function() {
+    // valor inicial
     let value = Number(input.value);
-    if (value > 8 && value <= 13) {
-      counter--;
-    } else if (value > 13) {
-      counter -= 2;
+    // devolucion de puntos
+    if (value < previousValue) {
+      let cambio = previousValue - value;
+      if (value <= 13) {
+        cambio = 1;
+      } else if (value <= 8) {
+        cambio = 2;
+      }
+      counter += cambio;
+      // resta del contador
+    } else {
+      let cambio = 0;
+      if (value > 8 && value <= 13) {
+        cambio = -1;
+      } else if (value > 13) {
+        cambio = -2;
+      }
+      // mientras el contador tenga suficientes puntos sino lo setea al valor anterior
+      if (counter + cambio >= 0) {
+        counter += cambio;
+      } else {
+        input.value = previousValue;
+        return;
+      }
     }
+    previousValue = value;
     counterValue.innerHTML = counter;
   });
 });
-
-// // counter
-// function checkNumbers() {
-//   if (fuerzaTotal >= 8 && fuerzaTotal <= 15 &&
-//       carismaTotal >= 8 && carismaTotal <= 15 &&
-//       constitucionTotal >= 8 && constitucionTotal <= 15 &&
-//       destrezaTotal >= 8 && destrezaTotal <= 15 &&
-//       inteligenciaTotal >= 8 && inteligenciaTotal <= 15 &&
-//       sabiduriaTotal >= 8 && sabiduriaTotal <= 15) {
-
-//     counter -= fuerzaTotal > 8 ? (fuerzaTotal > 13 ? 2 : 1) : 0;
-//     counter -= carismaTotal > 8 ? (carismaTotal > 13 ? 2 : 1) : 0;
-//     counter -= constitucionTotal > 8 ? (constitucionTotal > 13 ? 2 : 1) : 0;
-//     counter -= destrezaTotal > 8 ? (destrezaTotal > 13 ? 2 : 1) : 0;
-//     counter -= inteligenciaTotal > 8 ? (inteligenciaTotal > 13 ? 2 : 1) : 0;
-//     counter -= sabiduriaTotal > 8 ? (sabiduriaTotal > 13 ? 2 : 1) : 0;
-
-//     if (counter >= 0) {
-//       localStorage.setItem("fuerza", fuerzaTotal);
-//       localStorage.setItem("carisma", carismaTotal);
-//       localStorage.setItem("constitucion", constitucionTotal);
-//       localStorage.setItem("destreza", destrezaTotal);
-//       localStorage.setItem("inteligencia", inteligenciaTotal);
-//       localStorage.setItem("sabiduria", sabiduriaTotal);
-//       ;
-//     } else {
-//       alert("El total no puede exceder a 27 puntos");
-//     }
-//   }
-// }

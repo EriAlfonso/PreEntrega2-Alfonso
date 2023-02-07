@@ -36,7 +36,18 @@ for (let personaje of grupoPersonajes) {
     let expandirBtn = document.getElementById(`expandirBtn${personaje.id}`);
     expandirBtn.addEventListener("click", function() {
         toggleContent(this)});
-    borrarBtn.addEventListener("click", () => {});
+    borrarBtn.addEventListener("click", function(){
+        verCards.remove();
+        let personajeEliminar = grupoPersonajes.find((personaje)=> personaje.id )
+        console.log(personajeEliminar)
+        //buscar el indice
+        let posicion = grupoPersonajes.indexOf(personajeEliminar)
+        console.log(posicion)
+        grupoPersonajes.splice(posicion,1)
+        console.log(grupoPersonajes)
+        // Borrar del storage
+        localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
+});
 }
 }
 // expandir cards
@@ -47,9 +58,6 @@ function toggleContent(element) {
     } else {
     cardBody.style.display = "none";
     }
-}
-mostrarPersonajes.onclick = () => {
-verPersonajes(grupoPersonajes);
 };
 
 // busqueda por nombre y clase
@@ -66,8 +74,11 @@ function buscarPersonaje(find, array){
     }
 }
 
-
+// eventos
 search.addEventListener("input", ()=>{
     buscarPersonaje(search.value, grupoPersonajes)
 })
 
+mostrarPersonajes.onclick = () => {
+    verPersonajes(grupoPersonajes);
+    };
