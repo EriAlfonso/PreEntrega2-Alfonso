@@ -32,6 +32,7 @@ for (let personaje of grupoPersonajes) {
     </div>
     `;
     personajesCreados.appendChild(verCards);
+
     //captura de dom de los botones
     let borrarBtn = document.getElementById(`borrarBtn${personaje.id}`);
     let expandirBtn = document.getElementById(`expandirBtn${personaje.id}`);
@@ -52,6 +53,7 @@ for (let personaje of grupoPersonajes) {
 });
 }
 }
+
 // expandir cards
 function toggleContent(element) {
     let cardBody = element.closest(".card").querySelector(".cardHidden");
@@ -76,6 +78,7 @@ function buscarPersonaje(find, array){
     }
 }
 
+// filtro por nombre
 function ordenarPorNombre(array) {
     const nombresAlfabeticamente = [].concat(array);
     nombresAlfabeticamente.sort((a, b) => {
@@ -90,6 +93,7 @@ function ordenarPorNombre(array) {
     verPersonajes(nombresAlfabeticamente);
 }
 
+// filtro de clase
 function ordenarPorClase(array) {
     const claseAlfabeticamente = [].concat(array);
     claseAlfabeticamente.sort((a, b) => {
@@ -104,6 +108,7 @@ function ordenarPorClase(array) {
     verPersonajes(claseAlfabeticamente);
 }
 
+// filtro de raza
 function ordenarPorRaza(array) {
     const razaAlfabeticamente = [].concat(array);
     razaAlfabeticamente.sort((a, b) => {
@@ -117,8 +122,8 @@ function ordenarPorRaza(array) {
     });
     verPersonajes(razaAlfabeticamente);
 }
-// eventos
 
+// eventos
 // buscador
 search.addEventListener("input", ()=>{
     buscarPersonaje(search.value, grupoPersonajes)
