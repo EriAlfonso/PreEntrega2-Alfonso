@@ -37,22 +37,34 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
   });
 });
 
+
+// images
+let imageChoice = document.getElementById("imageSelect");
+let previewImage = document.getElementById("previewImage");
+
+imageChoice.addEventListener("change", function() {
+  previewImage.src = `../assets/${this.value}`;
+});
+
+
+
 //creadores de personaje
 // form
 const form = document.getElementById('personajeSetupForm')
 form.addEventListener('submit', (event) => {
     event.preventDefault()
-    let nombrePersonaje =document.getElementById("nombrePersonaje").value;
-    let clasePersonaje =document.getElementById("clasePersonaje").value;
-    let razaPersonaje =document.getElementById("razaPersonaje").value;
-    let fuerzaTotal =document.getElementById("fuerzaTotal").value;
-    let carismaTotal =document.getElementById("carismaTotal").value;
-    let constitucionTotal =document.getElementById("constitucionTotal").value;
-    let destrezaTotal =document.getElementById("destrezaTotal").value;
-    let inteligenciaTotal =document.getElementById("inteligenciaTotal").value;
-    let sabiduriaTotal =document.getElementById("sabiduriaTotal").value;
+    let imagenPersonaje = document.getElementById("imageSelect").value
+    let nombrePersonaje = document.getElementById("nombrePersonaje").value;
+    let clasePersonaje = document.getElementById("clasePersonaje").value;
+    let razaPersonaje = document.getElementById("razaPersonaje").value;
+    let fuerzaTotal = document.getElementById("fuerzaTotal").value;
+    let carismaTotal = document.getElementById("carismaTotal").value;
+    let constitucionTotal = document.getElementById("constitucionTotal").value;
+    let destrezaTotal = document.getElementById("destrezaTotal").value;
+    let inteligenciaTotal = document.getElementById("inteligenciaTotal").value;
+    let sabiduriaTotal = document.getElementById("sabiduriaTotal").value;
     // creador del objeto
-    const personajeNew = new Personaje(grupoPersonajes.length + 1, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
+    const personajeNew = new Personaje(grupoPersonajes.length + 1, imagenPersonaje, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
     console.log(personajeNew)
     grupoPersonajes.push(personajeNew)
     console.log(grupoPersonajes)
@@ -63,6 +75,7 @@ const modal = document.getElementById('modal-body')
 modalGuardar.addEventListener('click', (event) => {
     event.preventDefault()
     // valores adquirido del usuario
+    let imagenPersonaje = document.getElementById("imageSelectModal").value
     let nombrePersonaje =document.getElementById("nombrePersonajeModal").value;
     let clasePersonaje =document.getElementById("clasePersonajeModal").value;
     let razaPersonaje =document.getElementById("razaPersonajeModal").value;
@@ -74,7 +87,7 @@ modalGuardar.addEventListener('click', (event) => {
     let inteligenciaTotal = Math.floor((Math.random() * 18) + 1);
     let sabiduriaTotal = Math.floor((Math.random() * 18) + 1);
     // creador del objeto
-    const personajeNew = new Personaje(grupoPersonajes.length + 1, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
+    const personajeNew = new Personaje(grupoPersonajes.length + 1, imagenPersonaje, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
     console.log(personajeNew)
     grupoPersonajes.push(personajeNew)
     console.log(grupoPersonajes)

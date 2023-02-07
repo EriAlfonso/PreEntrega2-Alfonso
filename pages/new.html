@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../index.html"><img src="../Assets/dragonicondark.png" alt="Logo" width=""
+                <a class="navbar-brand" href="../index.html"><img src="../assets/dragonicondark.png" alt="Logo" width=""
                         height="34" class="d-inline-block align-text-top">
                     Easy Character</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -37,7 +37,8 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input id="search" class="form-control me-2" type="search" placeholder="Search"
+                            aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                     <ul>
@@ -60,10 +61,10 @@
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
             Nuevo Personaje al Azar
         </button>
-        <div class="form-check form-switch">
+        <!-- <div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
             <label class="form-check-label darkmode" for="flexSwitchCheckDefault">Dark</label>
-        </div>
+        </div> -->
 
         <!-- Form Para Personajes -->
         <div id="personajeNuevoForm">
@@ -104,6 +105,23 @@
                     <!-- Paso 1 Contenido -->
                     <section id="step-1" class="form-step">
                         <h2 class="font-normal">Detalles del personaje</h2>
+                        <div class="image-preview-container">
+                            <img id="previewImage" src="" alt="Preview Image">
+                        </div>
+                        <div class="form-group">
+                            <label for="imageSelect">Select Image:</label>
+                            <select class="form-control" id="imageSelect">
+                                <option value="">Seleccione imagen</option>
+                                <option value="arqueroF.png">arquera</option>
+                                <option value="arqueroM.png">arquero</option>
+                                <option value="magoF.png">maga</option>
+                                <option value="magoM.png">mago</option>
+                                <option value="paladinF.png">paldadin</option>
+                                <option value="paladinM.png">paladin 2</option>
+                                <option value="picaroF.png">picara</option>
+                                <option value="picaroM.png">picaro</option>
+                            </select>
+                        </div>
                         <div class="mt-3">
                             <label>Nombre del personaje:</label>
                             <p><input placeholder="Nombre..." id="nombrePersonaje"></p>
@@ -174,27 +192,39 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                                <label for="imageSelect">Select Image:</label>
+                                <select class="form-control" id="imageSelectModal">
+                                    <option value="">Seleccione imagen</option>
+                                    <option value="arqueroF.png">arquera</option>
+                                    <option value="arqueroM.png">arquero</option>
+                                    <option value="magoF.png">maga</option>
+                                    <option value="magoM.png">mago</option>
+                                    <option value="paladinF.png">paldadin</option>
+                                    <option value="paladinM.png">paladin 2</option>
+                                    <option value="picaroF.png">picara</option>
+                                    <option value="picaroM.png">picaro</option>
+                                </select>
                         <label>Nombre del personaje:</label>
                         <p><input placeholder="Nombre..." id="nombrePersonajeModal"></p>
                         <label>Raza del personaje:</label>
                         <select class="form-select" aria-label="Default select" id="razaPersonajeModal">
-                        <option selected>Humano</option>
-                        <option>Elfo</option>
-                        <option>Enano</option>
-                        <option>Mediano</option>
-                    </select>
-                    <label>Clase del personaje:</label>
-                    <select class="form-select" aria-label="Default select" id="clasePersonajeModal">
-                        <option selected>Mago</option>
-                        <option>Picaro</option>
-                        <option>Arquero</option>
-                        <option>Paladin</option>
-                    </select>
+                            <option selected>Humano</option>
+                            <option>Elfo</option>
+                            <option>Enano</option>
+                            <option>Mediano</option>
+                        </select>
+                        <label>Clase del personaje:</label>
+                        <select class="form-select" aria-label="Default select" id="clasePersonajeModal">
+                            <option selected>Mago</option>
+                            <option>Picaro</option>
+                            <option>Arquero</option>
+                            <option>Paladin</option>
+                        </select>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button  class="btn btn-primary" type="button" id="modalGuardar"
-                        onclick="window.location.href='../index.html'">Guardar</button>
+                        <button class="btn btn-primary" type="button" id="modalGuardar"
+                            onclick="window.location.href='../index.html'">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -211,7 +241,7 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <!-- js -->
-    <script src="../JS/ClassesArray.js"></script>
+    <script src="../JS/classesArray.js"></script>
     <script src="../JS/main.js"></script>
     <script src="../JS/form.js"></script>
 </body>
