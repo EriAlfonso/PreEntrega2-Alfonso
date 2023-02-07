@@ -13,7 +13,7 @@ for (let personaje of grupoPersonajes) {
     verCards.classList.add("col-12", "col-md-6", "col-lg-4", "mb-3");
     verCards.innerHTML = `
     <div id="${personaje.id}" class="card" style="width: 18rem;">
-            <img class="card-img-top img-fluid" style="height: 275px;"src="Assets/${personaje.imagen}" alt="${personaje.nombre} el ${personaje.clase}">
+            <img class="card-img-top img-fluid" style="height: 275px;"src="assets/${personaje.imagen}" alt="${personaje.nombre} el ${personaje.clase}">
             <div class="card-body">
                 <h4 class="card-title">${personaje.nombre}</h4>
                 <p>Raza: ${personaje.raza}</p>
