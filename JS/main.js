@@ -2,6 +2,7 @@
 let mostrarPersonajes = document.getElementById("verPersonajes");
 let personajesCreados = document.getElementById("personajesCreados");
 let search = document.getElementById("search");
+let ordenar = document.getElementById("orden");
 
 
 // function para ver los personajes creados
@@ -38,7 +39,8 @@ for (let personaje of grupoPersonajes) {
         toggleContent(this)});
     borrarBtn.addEventListener("click", function(){
         verCards.remove();
-        let personajeEliminar = grupoPersonajes.find((personaje)=> personaje.id )
+        let id = personaje.id;
+        let personajeEliminar = grupoPersonajes.find((personaje)=> personaje.id === id)
         console.log(personajeEliminar)
         //buscar el indice
         let posicion = grupoPersonajes.indexOf(personajeEliminar)
@@ -74,11 +76,68 @@ function buscarPersonaje(find, array){
     }
 }
 
+function ordenarPorNombre(array) {
+    const nombresAlfabeticamente = [].concat(array);
+    nombresAlfabeticamente.sort((a, b) => {
+        if (a.nombre > b.nombre) {
+            return 1;
+        }
+        if (a.nombre < b.nombre) {
+            return -1;
+        }
+        return 0;
+    });
+    verPersonajes(nombresAlfabeticamente);
+}
+
+function ordenarPorClase(array) {
+    const claseAlfabeticamente = [].concat(array);
+    claseAlfabeticamente.sort((a, b) => {
+        if (a.clase > b.clase) {
+            return 1;
+        }
+        if (a.clase < b.clase) {
+            return -1;
+        }
+        return 0;
+    });
+    verPersonajes(claseAlfabeticamente);
+}
+
+function ordenarPorRaza(array) {
+    const razaAlfabeticamente = [].concat(array);
+    razaAlfabeticamente.sort((a, b) => {
+        if (a.raza > b.raza) {
+            return 1;
+        }
+        if (a.raza < b.raza) {
+            return -1;
+        }
+        return 0;
+    });
+    verPersonajes(razaAlfabeticamente);
+}
 // eventos
+
+// buscador
 search.addEventListener("input", ()=>{
     buscarPersonaje(search.value, grupoPersonajes)
 })
 
+// ordenador
+ordenar.addEventListener("change", () => {
+    if (ordenar.value == 1) {
+        ordenarPorNombre(grupoPersonajes);
+    } else if (ordenar.value == 2) {
+        ordenarPorClase(grupoPersonajes);
+    } else if (ordenar.value == 3) {
+        ordenarPorRaza(grupoPersonajes);
+    } else {
+        verPersonajes(grupoPersonajes);
+    }
+});
+
+// mostrar personajes array
 mostrarPersonajes.onclick = () => {
     verPersonajes(grupoPersonajes);
     };
