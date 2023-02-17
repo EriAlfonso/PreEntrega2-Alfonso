@@ -1,7 +1,9 @@
 // clase constructora para array
 class Personaje {
-    constructor(id, imagen, nombre, clase, raza, fuerza, carisma, constitucion, destreza, inteligencia, sabiduria) {
+    constructor(id, level, hp , imagen, nombre, clase, raza, fuerza, carisma, constitucion, destreza, inteligencia, sabiduria) {
             this.id = id
+            this.level = level,
+            this.hp = hp
             this.imagen = imagen,
             this.nombre = nombre,
             this.clase = clase,

@@ -38,7 +38,7 @@ document.querySelectorAll(".btn-navigate-form-step").forEach((formNavigationBtn)
 });
 
 
-// images
+// imagenes
 let imageChoice = document.getElementById("imageSelect");
 let previewImage = document.getElementById("previewImage");
 
@@ -53,7 +53,8 @@ imageChoice.addEventListener("change", function() {
 const form = document.getElementById('personajeSetupForm')
 form.addEventListener('submit', (event) => {
     event.preventDefault()
-    let imagenPersonaje = document.getElementById("imageSelect").value
+    let levelPersonaje = 1
+    let imagenPersonaje = document.getElementById("imageSelect").value;
     let nombrePersonaje = document.getElementById("nombrePersonaje").value;
     let clasePersonaje = document.getElementById("clasePersonaje").value;
     let razaPersonaje = document.getElementById("razaPersonaje").value;
@@ -63,8 +64,31 @@ form.addEventListener('submit', (event) => {
     let destrezaTotal = document.getElementById("destrezaTotal").value;
     let inteligenciaTotal = document.getElementById("inteligenciaTotal").value;
     let sabiduriaTotal = document.getElementById("sabiduriaTotal").value;
+    let hpPersonaje = clasePersonaje.toLowerCase() === "paladin" ? 
+      10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "picaro" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
+      : clasePersonaje.toLowerCase() === "arquero" ? 
+      10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "mago" ?
+      6 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "barbaro" ? 
+      12 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
+      : clasePersonaje.toLowerCase() === "guerrero" ? 
+      10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "bardo" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)  
+      : clasePersonaje.toLowerCase() === "clerigo" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)  
+      : clasePersonaje.toLowerCase() === "druida" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
+      : clasePersonaje.toLowerCase() === "hechicero" ? 
+      6 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "explorador" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)   
+      :8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) ;
     // creador del objeto
-    const personajeNew = new Personaje(grupoPersonajes.length + 1, imagenPersonaje, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
+    const personajeNew = new Personaje(grupoPersonajes.length + 1, levelPersonaje, hpPersonaje, imagenPersonaje, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
     console.log(personajeNew)
     grupoPersonajes.push(personajeNew)
     console.log(grupoPersonajes)
@@ -75,6 +99,7 @@ const modal = document.getElementById('modal-body')
 modalGuardar.addEventListener('click', (event) => {
     event.preventDefault()
     // valores adquirido del usuario
+    let levelPersonaje = 1
     let imagenPersonaje = document.getElementById("imageSelectModal").value
     let nombrePersonaje =document.getElementById("nombrePersonajeModal").value;
     let clasePersonaje =document.getElementById("clasePersonajeModal").value;
@@ -86,8 +111,31 @@ modalGuardar.addEventListener('click', (event) => {
     let destrezaTotal = Math.floor((Math.random() * 18) + 1);
     let inteligenciaTotal = Math.floor((Math.random() * 18) + 1);
     let sabiduriaTotal = Math.floor((Math.random() * 18) + 1);
+    let hpPersonaje = clasePersonaje.toLowerCase() === "paladin" ? 
+      10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "picaro" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
+      : clasePersonaje.toLowerCase() === "arquero" ? 
+      10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "mago" ?
+      6 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "barbaro" ? 
+      12 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
+      : clasePersonaje.toLowerCase() === "guerrero" ? 
+      10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "bardo" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)  
+      : clasePersonaje.toLowerCase() === "clerigo" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)  
+      : clasePersonaje.toLowerCase() === "druida" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
+      : clasePersonaje.toLowerCase() === "hechicero" ? 
+      6 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
+      : clasePersonaje.toLowerCase() === "explorador" ? 
+      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)   
+      :8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) ;
     // creador del objeto
-    const personajeNew = new Personaje(grupoPersonajes.length + 1, imagenPersonaje, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
+    const personajeNew = new Personaje(grupoPersonajes.length + 1, levelPersonaje, hpPersonaje, imagenPersonaje, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
     console.log(personajeNew)
     grupoPersonajes.push(personajeNew)
     console.log(grupoPersonajes)

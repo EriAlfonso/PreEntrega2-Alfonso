@@ -16,9 +16,11 @@ for (let personaje of grupoPersonajes) {
             <img class="card-img-top img-fluid" style="height: 275px;"src="assets/${personaje.imagen}" alt="${personaje.nombre} el ${personaje.clase}">
             <div class="card-body">
                 <h4 class="card-title">${personaje.nombre}</h4>
+                <p>Nivel: ${personaje.level}</p>
                 <p>Raza: ${personaje.raza}</p>
                 <p>Clase: ${personaje.clase}</p>
                 <div class="cardHidden" style="display: none;">
+                    <p>Hitpoints:  ${personaje.hp} </p>
                     <p>Fuerza:  ${personaje.fuerza} </p>
                     <p>Carisma:  ${personaje.carisma} </p>
                     <p>Constitucion:  ${personaje.constitucion} </p>
