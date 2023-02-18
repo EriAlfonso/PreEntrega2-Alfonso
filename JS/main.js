@@ -28,7 +28,8 @@ for (let personaje of grupoPersonajes) {
                     <p>Inteligencia:  ${personaje.inteligencia} </p>
                     <p>Sabiduria:  ${personaje.sabiduria} </p>
                 </div>
-            <button id="expandirBtn${personaje.id}" class="btn btn-outline-success">Expandir</button>
+            <button id="nivelBtn${personaje.id}" class="btn btn-outline-success">↑nivel</button>
+            <button id="expandirBtn${personaje.id}" class="btn btn-outline-warning">Expandir</button>
             <button id="borrarBtn${personaje.id}" class="btn btn-outline-danger">Borrar</button>
             </div>
     </div>
@@ -38,23 +39,49 @@ for (let personaje of grupoPersonajes) {
     //captura de dom de los botones
     let borrarBtn = document.getElementById(`borrarBtn${personaje.id}`);
     let expandirBtn = document.getElementById(`expandirBtn${personaje.id}`);
+    let levelBtn = document.getElementById(`nivelBtn${personaje.id}`);
     expandirBtn.addEventListener("click", function() {
         toggleContent(this)});
+    levelBtn.addEventListener("click", function() {
+        personaje.level++;
+        verCards.querySelector("p:nth-of-type(1)").textContent = `Nivel: ${personaje.level}`;
+        if (personaje.clase== "mago"){
+            personaje.hp += Math.floor(Math.random() * 6) + 1
+        }
+        else if (personaje.clase== "brujo"){
+            personaje.hp += Math.floor(Math.random() * 6) + 1
+        }
+        else if (personaje.clase== "paladin"){
+            personaje.hp += Math.floor(Math.random() * 10) + 1
+        }
+        else if(personaje.clase== "guerrero") {
+            personaje.hp += Math.floor(Math.random() * 10) + 1
+        }
+        else if(personaje.clase== "arquero") {
+            personaje.hp += Math.floor(Math.random() * 10) + 1
+        }
+        else if(personaje.clase== "barbaro") {
+            personaje.hp += Math.floor(Math.random() * 12) + 1
+        }
+        else{
+            personaje.hp += Math.floor(Math.random() * 8) + 1
+        }
+        verCards.querySelector(".cardHidden p:nth-of-type(1)").textContent = `Hitpoints: ${personaje.hp}`
+        localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
+        });
     borrarBtn.addEventListener("click", function(){
         verCards.remove();
         let id = personaje.id;
         let personajeEliminar = grupoPersonajes.find((personaje)=> personaje.id === id)
-        console.log(personajeEliminar)
         //buscar el indice
         let posicion = grupoPersonajes.indexOf(personajeEliminar)
-        console.log(posicion)
         grupoPersonajes.splice(posicion,1)
-        console.log(grupoPersonajes)
         // Borrar del storage
         localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
 });
 }
 }
+
 
 // expandir cards
 function toggleContent(element) {
