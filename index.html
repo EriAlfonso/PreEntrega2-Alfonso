@@ -34,12 +34,12 @@
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
-                        <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <input id="search" class="form-control me-2" type="search" placeholder="Search"
+                            aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                     <ul>
-                        <select id="orden" class="form-select form-select-sm"
-                            aria-label=".form-select-sm example">
+                        <select id="orden" class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option selected>filtrar por:</option>
                             <option value="1">Alfabeticamente</option>
                             <option value="2">Clase</option>
@@ -51,14 +51,35 @@
         </nav>
     </header>
     <main>
-        <button type="button" id="Crearpersonaje" class="btn btn-danger" onclick="window.location.href='./pages/new.html'" >Crear personaje</button>
-        <button type="button" class="btn btn-warning" id="verPersonajes">Ver Personajes</button>
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+            id="grupoNuevo">Nuevo Grupo</button>
+        <button type="button" id="Crearpersonaje" class="btn btn-outline-success"
+            onclick="window.location.href='./pages/new.html'">Crear personaje</button>
+        <button type="button" class="btn btn-outline-success" id="verPersonajes">Ver Personajes</button>
 
         <div class="container">
-            <div id="coincidencia"></div>
+            <div id="personajeReturn"></div>
             <div id="personajesCreados" class="row"></div>
         </div>
 
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Agregar Grupo Nuevo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Acceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
 

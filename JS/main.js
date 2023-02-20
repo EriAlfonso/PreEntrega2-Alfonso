@@ -40,35 +40,30 @@ for (let personaje of grupoPersonajes) {
     let borrarBtn = document.getElementById(`borrarBtn${personaje.id}`);
     let expandirBtn = document.getElementById(`expandirBtn${personaje.id}`);
     let levelBtn = document.getElementById(`nivelBtn${personaje.id}`);
+    let constitucionPlus = (personaje.constitucion > 13 ? 2 : personaje.constitucion > 11 ? 1 : 0)
     expandirBtn.addEventListener("click", function() {
         toggleContent(this)});
+    // function para subir de nivel
     levelBtn.addEventListener("click", function() {
         personaje.level++;
         verCards.querySelector("p:nth-of-type(1)").textContent = `Nivel: ${personaje.level}`;
-        if (personaje.clase== "mago"){
-            personaje.hp += Math.floor(Math.random() * 6) + 1
-        }
-        else if (personaje.clase== "brujo"){
-            personaje.hp += Math.floor(Math.random() * 6) + 1
-        }
-        else if (personaje.clase== "paladin"){
-            personaje.hp += Math.floor(Math.random() * 10) + 1
-        }
-        else if(personaje.clase== "guerrero") {
-            personaje.hp += Math.floor(Math.random() * 10) + 1
-        }
-        else if(personaje.clase== "arquero") {
-            personaje.hp += Math.floor(Math.random() * 10) + 1
-        }
-        else if(personaje.clase== "barbaro") {
-            personaje.hp += Math.floor(Math.random() * 12) + 1
-        }
-        else{
-            personaje.hp += Math.floor(Math.random() * 8) + 1
-        }
+        personaje.clase== "mago"?
+            personaje.hp += Math.floor(Math.random() * 6) + 1 + constitucionPlus
+        :personaje.clase== "brujo"?
+            personaje.hp += Math.floor(Math.random() * 6) + 1 + constitucionPlus
+        :personaje.clase== "paladin"?
+            personaje.hp += Math.floor(Math.random() * 10) + 1 + constitucionPlus
+        :personaje.clase== "guerrero"?
+            personaje.hp += Math.floor(Math.random() * 10) + 1 + constitucionPlus
+        :personaje.clase== "arquero"?
+            personaje.hp += Math.floor(Math.random() * 10) + 1 + constitucionPlus
+        :personaje.clase== "barbaro"?
+            personaje.hp += Math.floor(Math.random() * 12) + 1 + constitucionPlus
+        :personaje.hp += Math.floor(Math.random() * 8) + 1 + constitucionPlus
         verCards.querySelector(".cardHidden p:nth-of-type(1)").textContent = `Hitpoints: ${personaje.hp}`
         localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
         });
+    // function para borrar
     borrarBtn.addEventListener("click", function(){
         verCards.remove();
         let id = personaje.id;
@@ -99,10 +94,10 @@ function buscarPersonaje(find, array){
         (personaje) => personaje.nombre.toLowerCase().includes(find) || personaje.clase.toLowerCase().includes(find) || personaje.raza.toLowerCase().includes(find)
     )
     if(buscarPersonaje.length == 0){
-        coincidencia.innerHTML = `<h3>El personaje, raza o clase no existe</h3>`
+        personajeReturn.innerHTML = `<h3>El personaje, raza o clase no existe</h3>`
         verPersonajes(buscarPersonaje)
     }else{
-        coincidencia.innerHTML = ""
+        personajeReturn.innerHTML = ""
         verPersonajes(buscarPersonaje)
     }
 }
@@ -174,4 +169,5 @@ ordenar.addEventListener("change", () => {
 // mostrar personajes array
 mostrarPersonajes.onclick = () => {
     verPersonajes(grupoPersonajes);
-    };
+    personajesCreados.style.display = personajesCreados.style.display === "block" ? "none" : "block";
+};

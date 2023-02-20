@@ -66,8 +66,6 @@ form.addEventListener('submit', (event) => {
     let sabiduriaTotal = document.getElementById("sabiduriaTotal").value;
     let hpPersonaje = clasePersonaje.toLowerCase() === "paladin" ? 
       10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
-      : clasePersonaje.toLowerCase() === "picaro" ? 
-      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
       : clasePersonaje.toLowerCase() === "arquero" ? 
       10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
       : clasePersonaje.toLowerCase() === "mago" ?
@@ -76,16 +74,8 @@ form.addEventListener('submit', (event) => {
       12 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
       : clasePersonaje.toLowerCase() === "guerrero" ? 
       10 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
-      : clasePersonaje.toLowerCase() === "bardo" ? 
-      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)  
-      : clasePersonaje.toLowerCase() === "clerigo" ? 
-      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)  
-      : clasePersonaje.toLowerCase() === "druida" ? 
-      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
       : clasePersonaje.toLowerCase() === "hechicero" ? 
-      6 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)
-      : clasePersonaje.toLowerCase() === "explorador" ? 
-      8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0)   
+      6 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) 
       :8 + (constitucionTotal > 13 ? 2 : constitucionTotal > 11 ? 1 : 0) ;
     // creador del objeto
     const personajeNew = new Personaje(grupoPersonajes.length + 1, levelPersonaje, hpPersonaje, imagenPersonaje, nombrePersonaje, clasePersonaje, razaPersonaje, fuerzaTotal, carismaTotal, constitucionTotal, destrezaTotal, inteligenciaTotal, sabiduriaTotal)
