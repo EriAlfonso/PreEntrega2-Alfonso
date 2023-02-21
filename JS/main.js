@@ -10,9 +10,9 @@ function verPersonajes(grupoPersonajes) {
 personajesCreados.innerHTML = "";
 for (let personaje of grupoPersonajes) {
     let verCards = document.createElement("div");
-    verCards.classList.add("col-12", "col-md-6", "col-lg-4", "mb-3");
+    verCards.classList.add("col-12", "col-md-6", "col-lg-3", "mb-3");
     verCards.innerHTML = `
-    <div id="${personaje.id}" class="card" style="width: 18rem;">
+    <div id="${personaje.id}" class="card" style="width: 18rem; margin-top: 2rem ;">
             <img class="card-img-top img-fluid" style="height: 275px;"src="assets/${personaje.imagen}" alt="${personaje.nombre} el ${personaje.clase}">
             <div class="card-body">
                 <h4 class="card-title">${personaje.nombre}</h4>
@@ -169,5 +169,4 @@ ordenar.addEventListener("change", () => {
 // mostrar personajes array
 mostrarPersonajes.onclick = () => {
     verPersonajes(grupoPersonajes);
-    personajesCreados.style.display = personajesCreados.style.display === "block" ? "none" : "block";
 };

@@ -16,8 +16,8 @@
     <header>
         <nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="./assets/dragonicondark.png" alt="Logo" width="" height="34"
-                        class="d-inline-block align-text-top">
+                <a class="navbar-brand" href="../index.html"><img src="../assets/dragonicondark.png" alt="Logo" width=""
+                        height="34" class="d-inline-block align-text-top">
                     Easy Character</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -27,13 +27,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                            <a class="nav-link" aria-current="page" href="../index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./pages/new.html">Nuevo Personaje</a>
+                            <a class="nav-link" href="./new.html">Nuevo Personaje</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="./pages/compendio.html">Compendio de Armas</a>
+                            <a class="nav-link active" aria-current="page" href="./compendio.html">Compendio de
+                                Armas</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -45,8 +46,8 @@
                         <select id="orden" class="form-select form-select-sm" aria-label=".form-select-sm example">
                             <option selected>filtrar por:</option>
                             <option value="1">Alfabeticamente</option>
-                            <option value="2">Clase</option>
-                            <option value="3">Raza</option>
+                            <option value="2">Daño</option>
+                            <option value="3">Categoria</option>
                         </select>
                     </ul>
                 </div>
@@ -54,15 +55,30 @@
         </nav>
     </header>
     <main>
-        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-            id="grupoNuevo">Nuevo Grupo</button>
-        <button type="button" id="Crearpersonaje" class="btn btn-outline-success"
-            onclick="window.location.href='./pages/new.html'">Crear personaje</button>
-        <button type="button" class="btn btn-outline-success" id="verPersonajes">Ver Personajes</button>
-
-        <div class="container">
-            <div id="personajeReturn"></div>
-            <div id="personajesCreados" class="row" ></div>
+        <h2>Armas</h2>
+            <table id="weaponTable" class="table table-dark table-hover">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Daño</th>
+                    <th>Costo</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <h2>Armaduras</h2>
+            <table id="armorTable" class="table table-dark table-hover">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Proteccion</th>
+                    <th>Costo</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
 
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -96,8 +112,8 @@
     <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- js -->
-    <script src="JS/classesArray.js"></script>
-    <script src="JS/main.js"></script>
+    <script src="../JS/classesArray.js"></script>
+    <script src="../JS/compendio.js"></script>
 </body>
 
 </html>
