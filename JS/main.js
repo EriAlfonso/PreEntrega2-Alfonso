@@ -308,11 +308,11 @@ mostrarPersonajes.onclick = () => {
     loaderText.style.display = "flex"
     personajesCreados.style.display = personajesCreados.style.display === "flex" ? "none" : "flex";
     grupoCreados.style.display = grupoCreados.style.display === "flex" ? "none" : "flex";
+    grupoTitulo.style.display = grupoTitulo.style.display === "none" ? "flex" : "none";
+    personajesTitulo.style.display = personajesTitulo.style.display === "none" ? "flex" : "none";
     setTimeout(()=>{
         loaderText.innerHTML = ""
         loader.remove()
-        grupoTitulo.style.display = "flex"
-        personajesTitulo.style.display = "flex"
         verPersonajes(grupoPersonajes);
         setiarGrupo(grupoAventura);
         loader.style.display = "none"

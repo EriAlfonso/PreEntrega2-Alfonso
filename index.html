@@ -58,6 +58,13 @@
             onclick="window.location.href='./pages/new.html'">Crear personaje</button>
         <button type="button" class="btn btn-outline-success" id="verPersonajes">Ver Personajes</button>
         
+                <div id= "loaderDiv" class= "d-flex justify-content-center"  >
+                <div id="loader" class="spinner-grow text-secondary " role="status" style= "display: none;">
+                    <span class="visually-hidden"></span>
+                </div>
+                <h3 id="loaderText" class="text-secondary " style= "display: none;">Cargando Personajes</h3>
+                </div>
+        
 
         <div class="container">
             <h2 id="grupoTitulo" style="display: none;">Grupo de Aventura</h2>
@@ -68,13 +75,6 @@
             <h2 id="personajeTitulo" style="display: none;">Personajes</h2>
             <div id="personajeReturn"></div>
             <div id="personajesCreados" class="row" ></div>
-        </div>
-
-        <div id= "loaderDiv" class= "d-flex justify-content-center"  >
-        <div id="loader" class="spinner-grow text-secondary " role="status" style= "display: none;">
-            <span class="visually-hidden"></span>
-        </div>
-        <h3 id="loaderText" class="text-secondary " style= "display: none;">Cargando Personajes</h3>
         </div>
 
     </main>
