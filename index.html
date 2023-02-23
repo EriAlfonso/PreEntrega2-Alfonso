@@ -54,35 +54,26 @@
         </nav>
     </header>
     <main>
-        <!-- <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-            id="grupoNuevo">Nuevo Grupo</button> -->
         <button type="button" id="Crearpersonaje" class="btn btn-outline-success"
             onclick="window.location.href='./pages/new.html'">Crear personaje</button>
         <button type="button" class="btn btn-outline-success" id="verPersonajes">Ver Personajes</button>
+        
 
+        
         <div class="container">
+            <div id="grupoReturn"></div>
+            <div id="grupoCreados" class="row" ></div>
             <div id="personajeReturn"></div>
             <div id="personajesCreados" class="row" ></div>
         </div>
 
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Agregar Grupo Nuevo</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Acceptar</button>
-                    </div>
-                </div>
-            </div>
+        <div id= "loaderDiv" class= "d-flex justify-content-center"  >
+        <div id="loader" class="spinner-grow text-secondary " role="status" style= "display: none;">
+            <span class="visually-hidden"></span>
         </div>
+        <h3 id="loaderText" class="text-secondary " style= "display: none;">Cargando Personajes</h3>
+        </div>
+
     </main>
     <footer>
 

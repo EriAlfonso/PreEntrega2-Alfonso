@@ -1,9 +1,12 @@
 // capturas de DOM
 let mostrarPersonajes = document.getElementById("verPersonajes");
 let personajesCreados = document.getElementById("personajesCreados");
+let grupoCreados = document.getElementById("grupoCreados");
 let search = document.getElementById("search");
 let ordenar = document.getElementById("orden");
-
+let loaderDiv = document.getElementById("loaderDiv")
+let loaderText = document.getElementById("loaderText");
+let loader = document.getElementById("loader");
 
 // function para ver los personajes creados
 function verPersonajes(grupoPersonajes) {
@@ -77,7 +80,6 @@ for (let personaje of grupoPersonajes) {
 }
 }
 
-
 // expandir cards
 function toggleContent(element) {
     let cardBody = element.closest(".card").querySelector(".cardHidden");
@@ -147,7 +149,7 @@ function ordenarPorRaza(array) {
     verPersonajes(razaAlfabeticamente);
 }
 
-// eventos
+//Eventos
 // buscador
 search.addEventListener("input", ()=>{
     buscarPersonaje(search.value, grupoPersonajes)
@@ -168,5 +170,14 @@ ordenar.addEventListener("change", () => {
 
 // mostrar personajes array
 mostrarPersonajes.onclick = () => {
-    verPersonajes(grupoPersonajes);
+    loader.style.display = "flex"
+    loaderText.style.display = "flex"
+    personajesCreados.style.display = personajesCreados.style.display === "flex" ? "none" : "flex";
+    setTimeout(()=>{
+        loaderText.innerHTML = ""
+        loader.remove()
+        verPersonajes(grupoPersonajes);
+        loader.style.display = "none"
+        loaderText.style.display = "none"
+    }, 1000)
 };
