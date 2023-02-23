@@ -7,6 +7,9 @@ let ordenar = document.getElementById("orden");
 let loaderDiv = document.getElementById("loaderDiv")
 let loaderText = document.getElementById("loaderText");
 let loader = document.getElementById("loader");
+let personajesTitulo = document.getElementById("personajeTitulo");
+let grupoTitulo = document.getElementById("grupoTitulo");
+
 
 // function para ver los personajes creados
 function verPersonajes(grupoPersonajes) {
@@ -67,6 +70,15 @@ for (let personaje of grupoPersonajes) {
         :personaje.hp += Math.floor(Math.random() * 8) + 1 + constitucionPlus
         verCards.querySelector(".cardHidden p:nth-of-type(1)").textContent = `Hitpoints: ${personaje.hp}`
         localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
+        Swal.fire({
+            title: 'Level Up!',
+            text: `${personaje.nombre} se ha vuelto aun mas fuerte!`,
+            icon: "success",
+            imageUrl: `../assets/lvlup.jpg`,
+            imageHeight: 300,
+            showConfirmButton: false,
+            timer: 1500,
+        });
         });
     // function para borrar
     borrarBtn.addEventListener("click", function(){
@@ -78,6 +90,15 @@ for (let personaje of grupoPersonajes) {
         grupoPersonajes.splice(posicion,1)
         // Borrar del storage
         localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
+        Swal.fire({
+            title: 'oh no!',
+            text: `${personaje.nombre} dejo de existir!`,
+            icon: "error",
+            imageUrl: `../assets/rip.jpeg`,
+            imageHeight: 200,
+            showConfirmButton: false,
+            timer: 1500,
+        });
 });
 // funcion para agregar a grupo
 addGroup.addEventListener("click", ()=>{
@@ -93,6 +114,7 @@ if(localStorage.getItem("grupo")){
 }else{
     grupoAventura = []
     localStorage.setItem("grupo", JSON.stringify(grupoAventura))
+    
 }
 
 
@@ -130,7 +152,16 @@ function setiarGrupo(grupoAventura){
             let grupoEliminar = grupoAventura.find((personaje)=> personaje.id ==personajeGrupo.id)
             let posicion = grupoAventura.indexOf(grupoEliminar)
             grupoAventura.splice(posicion,1)
-            localStorage.setItem("grupo", JSON.stringify(grupoAventura))
+            localStorage.setItem("grupo", JSON.stringify(grupoAventura));
+            Swal.fire({
+                title: 'Rest In Peace',
+                text: `${personajeGrupo.nombre} se fue del grupo!`,
+                icon: "error",
+                imageUrl: `../assets/rip.jpeg`,
+                imageHeight: 200,
+                showConfirmButton: false,
+                timer: 1500,
+            });
         });
 
         let expandirBtnGrupo = document.getElementById(`expandirBtngrupo${personajeGrupo.id}`);
@@ -139,6 +170,8 @@ function setiarGrupo(grupoAventura){
         });
     });
 }
+
+
 
 function agregarPersonajeGrupo(personaje){
     let personajeAgregado = grupoAventura.find((elem)=>elem.id == personaje.id)
@@ -278,6 +311,8 @@ mostrarPersonajes.onclick = () => {
     setTimeout(()=>{
         loaderText.innerHTML = ""
         loader.remove()
+        grupoTitulo.style.display = "flex"
+        personajesTitulo.style.display = "flex"
         verPersonajes(grupoPersonajes);
         setiarGrupo(grupoAventura);
         loader.style.display = "none"
