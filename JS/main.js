@@ -34,6 +34,7 @@ for (let personaje of grupoPersonajes) {
             <button id="nivelBtn${personaje.id}" class="btn btn-outline-success">↑nivel</button>
             <button id="expandirBtn${personaje.id}" class="btn btn-outline-warning">Expandir</button>
             <button id="borrarBtn${personaje.id}" class="btn btn-outline-danger">Borrar</button>
+            <button id="addGroup${personaje.id}" class="btn btn-outline-success">Agregar al grupo</button>
             </div>
     </div>
     `;
@@ -42,6 +43,7 @@ for (let personaje of grupoPersonajes) {
     //captura de dom de los botones
     let borrarBtn = document.getElementById(`borrarBtn${personaje.id}`);
     let expandirBtn = document.getElementById(`expandirBtn${personaje.id}`);
+    let addGroup = document.getElementById(`addGroup${personaje.id}`);
     let levelBtn = document.getElementById(`nivelBtn${personaje.id}`);
     let constitucionPlus = (personaje.constitucion > 13 ? 2 : personaje.constitucion > 11 ? 1 : 0)
     expandirBtn.addEventListener("click", function() {
@@ -77,8 +79,98 @@ for (let personaje of grupoPersonajes) {
         // Borrar del storage
         localStorage.setItem("grupoPersonaje", JSON.stringify(grupoPersonajes))
 });
+// funcion para agregar a grupo
+addGroup.addEventListener("click", ()=>{
+    agregarPersonajeGrupo(personaje)
+    });
+
 }
 }
+let grupoAventura
+if(localStorage.getItem("grupo")){
+    grupoAventura = JSON.parse(localStorage.getItem("grupo"))
+    console.log(grupoAventura)
+}else{
+    grupoAventura = []
+    localStorage.setItem("grupo", JSON.stringify(grupoAventura))
+}
+
+
+function setiarGrupo(grupoAventura){
+    grupoCreados.innerHTML = "";
+    grupoAventura.forEach((personajeGrupo)=>{
+        grupoCreados.innerHTML +=
+        `
+        <div id="grupo${personajeGrupo.id}" class="card" style="width: 18rem; margin: 1rem;">
+            <img class="card-img-top img-fluid" style="height: 275px;"src="assets/${personajeGrupo.imagen}" alt="${personajeGrupo.nombre} el ${personajeGrupo.clase}">
+            <div class="card-body">
+                <h4 class="card-title">${personajeGrupo.nombre}</h4>
+                <p>Nivel: ${personajeGrupo.level}</p>
+                <p>Raza: ${personajeGrupo.raza}</p>
+                <p>Clase: ${personajeGrupo.clase}</p>
+                <div class="cardHidden" style="display: none;">
+                    <p>Hitpoints:  ${personajeGrupo.hp} </p>
+                    <p>Fuerza:  ${personajeGrupo.fuerza} </p>
+                    <p>Carisma:  ${personajeGrupo.carisma} </p>
+                    <p>Constitucion:  ${personajeGrupo.constitucion} </p>
+                    <p>Destreza:  ${personajeGrupo.destreza} </p>
+                    <p>Inteligencia:  ${personajeGrupo.inteligencia} </p>
+                    <p>Sabiduria:  ${personajeGrupo.sabiduria} </p>
+                </div>
+            <button id="expandirBtngrupo${personajeGrupo.id}" class="btn btn-outline-warning">Expandir</button>
+            <button id="botonBorrar${personajeGrupo.id}" class="btn btn-outline-danger">Borrar del grupo</button>
+            </div>
+        </div>
+        `;
+
+        // eliminar del grupo
+        document.getElementById(`botonBorrar${personajeGrupo.id}`).addEventListener("click",()=>{
+            let personajeRemover = document.getElementById(`grupo${personajeGrupo.id}`)
+            personajeRemover.remove()
+            let grupoEliminar = grupoAventura.find((personaje)=> personaje.id ==personajeGrupo.id)
+            let posicion = grupoAventura.indexOf(grupoEliminar)
+            grupoAventura.splice(posicion,1)
+            localStorage.setItem("grupo", JSON.stringify(grupoAventura))
+        });
+
+        let expandirBtnGrupo = document.getElementById(`expandirBtngrupo${personajeGrupo.id}`);
+        expandirBtnGrupo.addEventListener("click", function() {
+            toggleContentgrupo(this)
+        });
+    });
+}
+
+function agregarPersonajeGrupo(personaje){
+    let personajeAgregado = grupoAventura.find((elem)=>elem.id == personaje.id)
+
+    if(personajeAgregado == undefined){
+        grupoAventura.push(personaje)
+        localStorage.setItem("grupo", JSON.stringify(grupoAventura))
+        Swal.fire({
+            title: 'Vamos de aventura!',
+            text: `${personaje.nombre} se unio al grupo!`,
+            icon: "success",
+            confirmButtonColor: "green",
+            confirmButtonText: "A la carga!",
+            timer: 3000,
+            imageUrl: `assets/${personaje.imagen}`,
+            imageHeight: 200
+        })
+        setiarGrupo(grupoAventura);
+    }else{
+        Swal.fire({
+            title: 'No necesitas dos de mi!',
+            text: `${personaje.nombre} ya esta en el grupo!`,
+            icon: "warning",
+            imageUrl: `assets/${personaje.imagen}`,
+            imageHeight: 200,
+            showConfirmButton: false,
+            timer: 1500,
+            
+        })
+    }
+}
+
 
 // expandir cards
 function toggleContent(element) {
@@ -87,6 +179,15 @@ function toggleContent(element) {
     cardBody.style.display = "block";
     } else {
     cardBody.style.display = "none";
+    }
+};
+
+function toggleContentgrupo(element) {
+    let cardBodygrupo = element.closest(".card").querySelector(".cardHidden");
+    if (cardBodygrupo.style.display === "none") {
+        cardBodygrupo.style.display = "block";
+    } else {
+        cardBodygrupo.style.display = "none";
     }
 };
 
@@ -173,11 +274,14 @@ mostrarPersonajes.onclick = () => {
     loader.style.display = "flex"
     loaderText.style.display = "flex"
     personajesCreados.style.display = personajesCreados.style.display === "flex" ? "none" : "flex";
+    grupoCreados.style.display = grupoCreados.style.display === "flex" ? "none" : "flex";
     setTimeout(()=>{
         loaderText.innerHTML = ""
         loader.remove()
         verPersonajes(grupoPersonajes);
+        setiarGrupo(grupoAventura);
         loader.style.display = "none"
         loaderText.style.display = "none"
     }, 1000)
 };
+
